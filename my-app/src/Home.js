@@ -1,10 +1,9 @@
-import backdrop from './images/backdrop.jpg'
+import React from 'react'
 
 
 export let HomePage = (props) => {
     return(
         <div className="title-screen">
-            <img src={backdrop} className='img-banner' />
             <div className="title-body">
                 <h1 className="title-screen-title">Hi, I am Jacob</h1>
                 <div className="btn-container">
