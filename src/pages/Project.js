@@ -1,35 +1,6 @@
-function CardListItem(props) {
-    return (
-        <li>{props.item}</li>
-    )
-}
+import ProjectCard from '../components/ProjectCard'
 
-function ProjectCard(props)  {
-
-    let listItems=[]
-    props.items.forEach((listItem) => {
-        listItems.push(<CardListItem item={listItem}></CardListItem>)
-    });
-
-    return (
-        <div className="rounded-xl border-4 border-blue-800 px-16 pt-5 pb-5 w-96 h-96 hover:from-blue-100 hover:to-purple-100 hover:bg-gradient-to-r hover:transition-all hover:ease hover:duration-500">
-            <h2 className="text-center text-3xl font-bold text-blue-800 whitespace-normal">{props.title}</h2>
-            <div className="flex flex-col h-1/2 items-end justify-end mt-5">
-                <div className="mx-auto mt-4 text-xl font-medium text-purple-700 pb-5">
-                    <ul className="list-disc">
-                        {listItems}
-                    </ul>
-                </div>
-            </div>
-            <div className="flex items-end justify-center">
-                <a href={props.link} target={props.link !== '/projects' ? '_blank' : '_parent'} rel={'noreferrer'} className="mx-2 px-8 py-2 whitespace-nowrap from-blue-800 to-purple-700 bg-gradient-to-r hover:from-purple-500 hover:to-blue-600 hover:bg-gradient-to-r font-bold text-white rounded-md">Live Demo</a>
-            </div>
-        </div>
-    )
-}
-
-
-export let ProjectPage = (props) => {
+const ProjectPage = (props) => {
     let projectCards = []
     
     let projects = [
@@ -58,7 +29,7 @@ export let ProjectPage = (props) => {
     projects.forEach((project) => {
         projectCards.push(
             <div className="flex-1 shrink" style={{flex: '0 0 auto'}}>
-                <ProjectCard title={project.title} items={project.things} link={project.link}/>
+                <ProjectCard projectName={project.title} items={project.things} link={project.link}/>
             </div>
         )
     });
@@ -76,3 +47,5 @@ export let ProjectPage = (props) => {
         </div>
     )
 }
+
+export default ProjectPage
