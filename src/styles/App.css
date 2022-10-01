@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .nav-container {
+        @apply flex justify-center pt-2 overflow-hidden max-h-0;
+    }
+
+    .nav-container.open {
+        @apply max-h-80;
+        transition: max-height 0.175s ease-in;
+    }
+
+    .nav-container-notran {
+        @apply flex justify-center pt-2 overflow-hidden max-h-0;
+    }
+    .nav-container-notran.open {
+        @apply max-h-80;
+    }
+
+    .btn {
+        @apply inline-block bg-blue-600 text-white py-3 px-5 mx-5 rounded-lg hover:from-blue-300 hover:to-purple-300 hover:bg-gradient-to-r hover:text-blue-900 hover:border-blue-600 transition-transform ease-in duration-150 hover:-translate-y-2 font-bold;
+    }
+
+}
