@@ -11,7 +11,10 @@ module.exports = {
     },
     extend: {
       transitionProperty: {
-        'height': 'height'
+        'maxHeight': 'max-height'
+      },
+      spacing: {
+        100: "100rem"
       }
     }
   },
