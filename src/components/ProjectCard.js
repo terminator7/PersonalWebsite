@@ -40,7 +40,7 @@ const MainCardList = ({list}) => {
 
 const CardButton = ({Icon, title, primaryColor, hoverColor}) => {
     return (
-        <a href="" className={"p-2 w-40 text-center rounded-lg text-white " + (primaryColor ? primaryColor : "") + " " + (hoverColor ? hoverColor : "")}>{title}</a>
+        <a href="" className={"p-2 w-40 text-center rounded-lg text-white font-bold " + (primaryColor ? primaryColor : "") + " " + (hoverColor ? hoverColor : "")}>{title}</a>
     )
 }
 
@@ -67,7 +67,7 @@ const ProjectCard = ({projectName, date, description, languages, links}) =>  {
             </div>
             <div className={`${toggleMenu ? "transition-maxHeight ease-in max-h-100 duration-500 overflow-hidden" : "transition-maxHeight ease-in-out duration-300 max-h-0 overflow-hidden"}`}>
                 <div className="flex flex-col body pt-2 px-4 pb-4 space-y-4">
-                    <div className="subHeader text-center italic text-gray-500">
+                    <div className="subHeader text-center italic text-gray-500 mt-4">
                         <h3>May 2020</h3>
                     </div>
                     <div className="Body">
