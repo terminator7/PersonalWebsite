@@ -52,7 +52,7 @@ const ProjectCard = ({projectName, date, description, languages, links}) =>  {
 
     const awesomeList = ["HTML", "JavaScript", "ReactJS", "BootStrap", "TailWind", "Java", "C++", "Java", "Css", "Something", "Something", "Something", "Something", "Something", "Something", "Something"]
     return (
-        <div className="projectCard w-96 border rounded-md shadow-lg"> 
+        <div className="projectCard w-96 border rounded-md shadow-lg flex-grow flex-shrink-0"> 
             <div onClick={toggleCard} className={`header w-full ${toggleMenu ? "from-blue-800 to-purple-700 bg-gradient-to-r text-white" : "bg-white"} transition-colors ease-in-out duration-300 rounded-md pt-4 pr-2 pl-2 pb-1 hover:from-blue-800 hover:to-purple-700 hover:bg-gradient-to-r hover:text-white hover:cursor-pointer`}>
                 <div className="flex justify-between">
                     <h3 className="text-2xl font-bold subpixel-antialiased">{projectName}</h3>

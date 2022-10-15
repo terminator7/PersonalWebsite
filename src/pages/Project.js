@@ -1,5 +1,5 @@
 import ProjectCard from '../components/ProjectCard'
-
+import CardCarousel from '../components/CardCarousel'
 const ProjectPage = (props) => {
     let projectCards = []
     
@@ -39,7 +39,7 @@ const ProjectPage = (props) => {
                 <div className="p-10">
                     <h1 className="text-7xl font-bold text-purple-700 text-center">Projects</h1>
                     <div className="flex flex-wrap mt-10 gap-2 justify-center">
-                        {projectCards}
+                        <CardCarousel projectCards={projectCards}></CardCarousel>
                     </div>
                 </div>
                 
