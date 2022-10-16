@@ -7,10 +7,9 @@ const CardCarousel = ({projectCards}) => {
     
     const [currentProjectCard, setCurrentProjectCard] = useState(0)
 
-    let mutProjectCards = [].concat(projectCards)
     const prevProjectCard = () => {
         if (currentProjectCard < 1) {
-            setCurrentProjectCard(projectCards.length-1)
+            setCurrentProjectCard(projectCards.length - 1)
         }
         else {
             setCurrentProjectCard(currentProjectCard - 1)
@@ -34,8 +33,8 @@ const CardCarousel = ({projectCards}) => {
                     </div>
                 </IconContext.Provider>
                 <div className="overflow-x-scroll w-96 h-[45rem] scrollbar-hide">
-                    <div className={`flex transition-all ease-linear duration-500 translate-x-[${currentProjectCard*-100}%]`}>
-                        {mutProjectCards}
+                    <div className={`flex transition-all ease-linear duration-500`} style={{transform : `translateX(-${currentProjectCard*100}%)`}}>
+                        {projectCards}
                     </div>
                 </div>
                 <IconContext.Provider value={{size: "1.75em"}}>
