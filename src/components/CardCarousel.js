@@ -1,22 +1,27 @@
 //import ProjectCard from "./ProjectCard";
 import { useEffect } from "react"
-import {React, useState} from "react"
+import ProjectCard from "./ProjectCard"
+import {useState} from "react"
+import React from "react"
 import { IconContext } from "react-icons"
 import {IoMdArrowDropleft, IoMdArrowDropright} from "react-icons/io"
 
-const CardCarousel = ({projectCards}) => {
+const CardCarousel = ({projects}) => {
     
     const [cardIndex, setCardIndex] = useState(1)
-    const [cardList, setCardList] = useState([projectCards[projectCards.length-1], ...projectCards, projectCards[0]])
     const [transitionEnabled, setTransitionEnabled] = useState(true)
     const [leftButtonEnabled, setLeftButtonEnabled] = useState(true)
     const [rightButtonEnabled, setRightButtonEnabled] = useState(true)
     
+    const cardListGroup = projects.map((element) => <ProjectCard projectName={element.title} date={element.date} languages={element.languages} link={element.link}></ProjectCard>) 
+    const cardListLength = cardListGroup.length
+
+    const cardList = [cardListGroup[cardListLength-1], ...cardListGroup, cardListGroup[0]]
     useEffect(() => {
-        if(cardIndex === 1 || cardIndex === projectCards.length) {
+        if(cardIndex === 1 || cardIndex === cardListLength) {
             setTransitionEnabled(true)
         }
-    }, [cardIndex])
+    }, [cardIndex, cardListLength])
 
     const handleTransitionEffect = () => {
         if(cardIndex === 0) {
@@ -54,7 +59,7 @@ const CardCarousel = ({projectCards}) => {
                 </IconContext.Provider>
                 <div className="overflow-x-scroll w-96 h-[45rem] scrollbar-hide">
                     <div className={`flex ${transitionEnabled ? "transition-all" : "transition-none"} ease-linear duration-500`} style={{transform : `translateX(-${cardIndex*100}%)`}} onTransitionEnd={handleTransitionEffect}> 
-                        {cardList}
+                        {cardList.map((component, key) => React.cloneElement(component, {key}))}
                     </div>
                 </div>
                 <IconContext.Provider value={{size: "1.75em"}}>

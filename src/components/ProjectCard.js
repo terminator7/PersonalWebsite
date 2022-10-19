@@ -8,8 +8,8 @@ const SubCardList = ({sublist}) => {
         <div className="px-6 flex-1">
             <ul className="list-disc">
                 {
-                    sublist.map(element => {
-                      return <li>{element}</li>  
+                    sublist.map((element, index) => {
+                      return <li key={index}>{element}</li>  
                     })
                 }
             </ul>
@@ -30,8 +30,8 @@ const MainCardList = ({list}) => {
     return (
         <React.Fragment>
             {
-                listGroup.map(list => {
-                    return <SubCardList sublist={list}></SubCardList>
+                listGroup.map((list, index) => {
+                    return <SubCardList key={index} sublist={list}></SubCardList>
                 })
             }
         </React.Fragment>
@@ -68,7 +68,7 @@ const ProjectCard = ({projectName, date, description, languages, links}) =>  {
             <div className={`${toggleMenu ? "transition-maxHeight ease-in max-h-100 duration-500 overflow-hidden" : "transition-maxHeight ease-in-out duration-300 max-h-0 overflow-hidden"}`}>
                 <div className="flex flex-col body pt-2 px-4 pb-4 space-y-4">
                     <div className="subHeader text-center italic text-gray-500 mt-4">
-                        <h3>May 2020</h3>
+                        <h3>{date}</h3>
                     </div>
                     <div className="Body">
                         <div className="description">
@@ -116,7 +116,7 @@ const ProjectCard = ({projectName, date, description, languages, links}) =>  {
                                  before:border-b-black">Languages Used</span></h3>
                             </div>
                             <div className="languagesContent px-2 flex justify-evenly flex-wrap">
-                                <MainCardList list={awesomeList}></MainCardList>  
+                                <MainCardList list={languages}></MainCardList>  
                             </div>
                         </div>
                         <div className="buttonArea p-2 mt-2">
