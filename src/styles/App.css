@@ -12,6 +12,10 @@
   font-family: "JetBrains_Mono", monospace;
 }
 
+.greetingSection {
+  background-color: #161616;
+}
+
 @layer components {
   .nav-container {
     @apply flex justify-center pt-2 overflow-hidden max-h-0;

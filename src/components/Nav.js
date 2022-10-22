@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import * as Icon from 'react-bootstrap-icons'
+import { IconContext } from 'react-icons'
+import { GoMarkGithub } from 'react-icons/go'
+import { BsLinkedin } from 'react-icons/bs'
+import { CgMail } from 'react-icons/cg'
 import { Link } from 'react-router-dom'
 import '../styles/App.css'
 
-function NavItem(props) {
+function NavItem({link, title}) {
   return(
-    <li className='px-2 pb-1 text-white text-center font-bold'><Link className="pb-2 px-2 xs:py-5 lg:py-2 xs:hover:text-blue-900 xs:hover:bg-white xs:rounded-lg lg:rounded-none xs:block lg:inline lg:hover:bg-blue-900 lg:hover:text-white lg:hover:border-b-4 border-white ease-linear duration-75 xs:text-xl lg:text-base" to={props.link}>{props.title}</Link></li>
+    <li className='px-2 text-white text-center font-bold'><a className="transition-all ease-in duration-75 hover:border-b-2 pb-1" to={link}>{title}</a></li>
   )
 }
 
@@ -31,19 +34,42 @@ export let NavBar = (props) => {
   }
 
   return(
-      <nav className="mx-auto pl-auto bg-blue-900">
-        <div>
-          <div className='lg:hidden px-2 pt-2'>
-            <button onClick={toggleNav} className="text-white hover:text-blue-500"><Icon.List size={50}/></button>
+      <nav className="from-blue-800 to-purple-700 bg-gradient-to-r shadow-lg shadow-slate-800">
+        <div className="navBody flex justify-between">
+          <div className='pt-3 px-3 flex'>
+            <ul className='flex'>
+              <NavItem title="Passions" link="#projects"></NavItem>
+              <NavItem title="Projects" link="#projects"></NavItem>
+              <NavItem title="About Me" link="#about"></NavItem>
+              <NavItem title="Contact" link="#contact"></NavItem>
+              <NavItem title="Resume" link="#projects"></NavItem>
+            </ul>
           </div>
-            <div className={`${screenWidth >= 1024 ? "nav-container-notran open" : `${toggleMenu ? "nav-container open" : "nav-container"}`}`} id="navContent">
-              <ul className='lg:flex p-2 xs:w-full lg:w-1/2 justify-center'>
-                <NavItem link="/" title="Home"></NavItem>
-                <NavItem link="/projects" title="Projects"></NavItem>
-                <NavItem link="/about" title="About"></NavItem>
-                <NavItem link="/contact" title="Contact"></NavItem>
-              </ul>
-            </div>
+          <div className='pt-3 px-3 pb-1'>
+            <ul className='flex'>
+              <li className='px-2'>
+                <IconContext.Provider value={{size: "1.75em"}}>
+                  <a href='#' className='text-gray-300 hover:text-blue-300'>
+                      <GoMarkGithub/>
+                  </a>
+                </IconContext.Provider>
+              </li>
+              <li className='px-2'>
+                <IconContext.Provider value={{size: "1.75em"}}>
+                  <a href='#' className='text-gray-300 hover:text-blue-300'>
+                      <BsLinkedin/>
+                  </a>
+                </IconContext.Provider>
+              </li>
+              <li className='px-2'>
+                <IconContext.Provider value={{size: "2em"}}>
+                  <a href='#' className='text-gray-300 hover:text-blue-300'>
+                      <CgMail/>
+                  </a>
+                </IconContext.Provider>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
   )
