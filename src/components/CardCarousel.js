@@ -6,14 +6,19 @@ import React from "react"
 import { IconContext } from "react-icons"
 import {IoMdArrowDropleft, IoMdArrowDropright} from "react-icons/io"
 
+const waitTime = (delay) => {
+    return new Promise((resolve) => setTimeout(resolve, delay))
+}
+
 const CardCarousel = ({projects}) => {
     
     const [cardIndex, setCardIndex] = useState(1)
     const [transitionEnabled, setTransitionEnabled] = useState(true)
     const [leftButtonEnabled, setLeftButtonEnabled] = useState(true)
     const [rightButtonEnabled, setRightButtonEnabled] = useState(true)
+    const [toggleCard, setToggleCard] = useState(true)
     
-    const cardListGroup = projects.map((element) => <ProjectCard projectName={element.title} date={element.date} languages={element.languages} link={element.link}></ProjectCard>) 
+    const cardListGroup = projects.map((element) => <ProjectCard projectName={element.title} date={element.date} languages={element.languages} link={element.link} collapsed={toggleCard}></ProjectCard>) 
     const cardListLength = cardListGroup.length
 
     const cardList = [cardListGroup[cardListLength-1], ...cardListGroup, cardListGroup[0]]
@@ -23,7 +28,7 @@ const CardCarousel = ({projects}) => {
         }
     }, [cardIndex, cardListLength])
 
-    const handleTransitionEffect = () => {
+    const handleTransitionEffect = async() => {
         if(cardIndex === 0) {
             setTransitionEnabled(false)
             setCardIndex(cardList.length-2)
@@ -35,6 +40,9 @@ const CardCarousel = ({projects}) => {
         }
         setRightButtonEnabled(true)
         setLeftButtonEnabled(true)
+        setTimeout(() => {
+            setToggleCard(true)
+        }, 1000)
     }
 
     const prevProjectCard = () => {
@@ -43,10 +51,13 @@ const CardCarousel = ({projects}) => {
             setLeftButtonEnabled(false)
         }
     }
-    const nextProjectCard = () => {
+    const nextProjectCard = async() => {
         if(rightButtonEnabled) {
-            setCardIndex(cardIndex + 1)
             setRightButtonEnabled(false)
+            setToggleCard(false)
+            setTimeout(() => {
+                setCardIndex(cardIndex + 1)
+            }, 1000);
         }
     }
     return (
@@ -57,9 +68,9 @@ const CardCarousel = ({projects}) => {
                         <IoMdArrowDropleft/>
                     </div>
                 </IconContext.Provider>
-                <div className="overflow-x-scroll w-96 h-[45rem] scrollbar-hide">
+                <div className="overflow-x-scroll w-96 h-[45rem]">
                     <div className={`flex ${transitionEnabled ? "transition-all" : "transition-none"} ease-linear duration-500`} style={{transform : `translateX(-${cardIndex*100}%)`}} onTransitionEnd={handleTransitionEffect}> 
-                        {cardList.map((component, key) => React.cloneElement(component, {key}))}
+                        {cardList}
                     </div>
                 </div>
                 <IconContext.Provider value={{size: "1.75em"}}>

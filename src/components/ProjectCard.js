@@ -44,16 +44,12 @@ const CardButton = ({Icon, title, primaryColor, hoverColor}) => {
     )
 }
 
-const ProjectCard = ({projectName, date, description, languages, links}) =>  {
+const ProjectCard = ({projectName, date, description, languages, links, collapsed}) =>  {
 
-    const [toggleMenu, setToggleMenu] = useState(false)
 
-    const toggleCard = () => setToggleMenu(!toggleMenu)
-
-    const awesomeList = ["HTML", "JavaScript", "ReactJS", "BootStrap", "TailWind", "Java", "C++", "Java", "Css", "Something", "Something", "Something", "Something", "Something", "Something", "Something"]
     return (
         <div className="projectCard w-96 border rounded-md shadow-lg flex-grow flex-shrink-0"> 
-            <div onClick={toggleCard} className={`header w-full ${toggleMenu ? "from-blue-800 to-purple-700 bg-gradient-to-r text-white" : "bg-white"} transition-colors ease-in-out duration-300 rounded-md pt-4 pr-2 pl-2 pb-1 hover:from-blue-800 hover:to-purple-700 hover:bg-gradient-to-r hover:text-white hover:cursor-pointer`}>
+            <div className={`header w-full ${collapsed ? "from-blue-800 to-purple-700 bg-gradient-to-r text-white" : "bg-white"} transition-colors ease-in-out duration-300 rounded-md pt-4 pr-2 pl-2 pb-1 hover:from-blue-800 hover:to-purple-700 hover:bg-gradient-to-r hover:text-white hover:cursor-pointer`}>
                 <div className="flex justify-between">
                     <h3 className="text-2xl font-bold subpixel-antialiased">{projectName}</h3>
                     <div className="flex items-center ">
@@ -65,7 +61,7 @@ const ProjectCard = ({projectName, date, description, languages, links}) =>  {
                     </div>
                 </div>
             </div>
-            <div className={`${toggleMenu ? "transition-maxHeight ease-in max-h-100 duration-500 overflow-hidden" : "transition-maxHeight ease-in-out duration-300 max-h-0 overflow-hidden"}`}>
+            <div className={`${collapsed ? "transition-maxHeight ease-in max-h-100 duration-500 overflow-hidden" : "transition-maxHeight ease-in-out duration-300 max-h-0 overflow-hidden"}`}>
                 <div className="flex flex-col body pt-2 px-4 pb-4 space-y-4">
                     <div className="subHeader text-center italic text-gray-500 mt-4">
                         <h3>{date}</h3>
