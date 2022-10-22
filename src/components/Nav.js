@@ -8,7 +8,7 @@ import '../styles/App.css'
 
 function NavItem({link, title}) {
   return(
-    <li className='px-2 text-white text-center font-bold'><a className="transition-all ease-in duration-75 hover:border-b-2 pb-1" to={link}>{title}</a></li>
+    <li className='px-2 text-white text-center font-bold'><a className="transition-all ease-in duration-75 hover:border-b-2 pb-1" href={link}>{title}</a></li>
   )
 }
 
@@ -34,11 +34,11 @@ export let NavBar = (props) => {
   }
 
   return(
-      <nav className="from-blue-800 to-purple-700 bg-gradient-to-r shadow-lg shadow-slate-800">
+      <nav className="from-blue-800 to-purple-700 bg-gradient-to-r shadow-lg shadow-slate-800 navBar">
         <div className="navBody flex justify-between">
           <div className='pt-3 px-3 flex'>
             <ul className='flex'>
-              <NavItem title="Passions" link="#projects"></NavItem>
+              <NavItem title="Passions" link="#passions"></NavItem>
               <NavItem title="Projects" link="#projects"></NavItem>
               <NavItem title="About Me" link="#about"></NavItem>
               <NavItem title="Contact" link="#contact"></NavItem>

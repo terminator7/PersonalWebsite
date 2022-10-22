@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@fant-face {
+  font-family: "JetBrains_Mono";
+  src: local("JetBrains_Mono"),
+    url(fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf) format("ttf");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "JetBrains_Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #121214;

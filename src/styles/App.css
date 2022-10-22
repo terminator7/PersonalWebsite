@@ -8,10 +8,6 @@
     url(../fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf) format("ttf");
 }
 
-.projectCard {
-  font-family: "JetBrains_Mono", monospace;
-}
-
 .greetingSection {
   background-color: #161616;
 }
