@@ -3,7 +3,7 @@ import profilePicture from '../images/pictureofme.jpg'
 
 const AboutMe = (props) => {
     return (
-        <section>
+        <section id='about'>
             <h2 className="text-gray-200 text-center font-medium text-[3rem]">About Me</h2>
             <div className="py-6"></div>
             <div className="greetingSection text-gray-200 flex mx-5 border rounded-md">

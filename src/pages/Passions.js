@@ -6,7 +6,7 @@ import { AiOutlineHtml5 } from 'react-icons/ai'
 import {IoGameControllerOutline} from 'react-icons/io5'
 const Passions = (props) => {
     return (
-        <section>
+        <section id="passions">
             <h2 className="text-gray-200 text-center font-medium text-[3rem]">My Passions</h2>
             <div className="py-6"></div>
             <div className="passionsCardContainer flex justify-center gap-10">
