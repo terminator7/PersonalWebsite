@@ -1,12 +1,25 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import { IconContext } from 'react-icons'
 import { AiFillCloseCircle, AiFillMinusCircle } from 'react-icons/ai'
 import "../styles/App.css"
-import * as Icon from 'react-bootstrap-icons'
-import { Link } from 'react-router-dom'
 
 
 export const Greetings = (props) => {
+
+    const [isCursorVisible, setCursorVisible] = useState(true)
+
+    useEffect(() => {
+        if(isCursorVisible) {
+            setTimeout(() => {
+                setCursorVisible(false)
+            }, 500);
+        } else {
+            setTimeout(() => {
+                setCursorVisible(true)
+            }, 500)
+        }
+    })
+
     return(
         <section className="w-full p-2 lg:p-6 welcomeSection">
             <div className='text-gray-200 border rounded-lg greetingSection'>
@@ -34,7 +47,7 @@ export const Greetings = (props) => {
                     <p>Here you will find everything there is to know about me and my journey in the world of Computer Science</p>
                 </div>
                 <div className='px-2 pb-1'>
-                    <span className='text-blue-500'>jacobdouglas29</span>:<span className='text-purple-400'>~/PersonalWebsite</span> $ _
+                    <span className='text-blue-500'>jacobdouglas29</span>:<span className='text-purple-400'>~/PersonalWebsite</span> $ <span className={`transition-opacity ease-linear ${isCursorVisible ? "opacity-100" : "opacity-0"}`}>_</span>
                 </div>
             </div>
         </section>

@@ -38,35 +38,28 @@ const MainCardList = ({list}) => {
     )
 }
 
-const CardButton = ({Icon, title, primaryColor, hoverColor}) => {
+const CardButton = ({title, primaryColor, hoverColor, link}) => {
     return (
-        <a href="" className={"p-2 w-40 text-center rounded-lg text-white font-bold " + (primaryColor ? primaryColor : "") + " " + (hoverColor ? hoverColor : "")}>{title}</a>
+        <a href={(link === "" ? "#" : link)} className={"p-2 w-40 text-center rounded-lg text-white font-bold " + (primaryColor ? primaryColor : "") + " " + (hoverColor ? hoverColor : "") + " " + (link === "" ? "line-through" : " ")}>{title}</a>
     )
 }
 
-const ProjectCard = ({projectName, date, description, languages, links, collapsed}) =>  {
+const ProjectCard = ({projectName, date, description, languages, demo, github, collapsed}) =>  {
 
 
     return (
-        <div className="projectCard w-96 border rounded-md shadow-lg flex-grow flex-shrink-0"> 
-            <div className={`header w-full ${collapsed ? "from-blue-800 to-purple-700 bg-gradient-to-r text-white" : "bg-white"} transition-colors ease-in-out duration-300 rounded-md pt-4 pr-2 pl-2 pb-1 hover:from-blue-800 hover:to-purple-700 hover:bg-gradient-to-r hover:text-white hover:cursor-pointer`}>
-                <div className="flex justify-between">
+        <div className="projectCard w-96 rounded-md shadow-lg hover:-translate-y-3 transition-transform ease-in-out duration-300 overflow-hidden"> 
+            <div className={`header w-full ${collapsed ? "from-blue-800 to-purple-700 bg-gradient-to-r text-white" : "bg-white"} transition-colors ease-in-out duration-300 rounded-t-md pt-4 pr-2 pl-2 pb-1 hover:from-blue-800 hover:to-purple-700 hover:bg-gradient-to-r hover:text-white hover:cursor-pointer`}>
+                <div className="flex justify-center pb-2">
                     <h3 className="text-2xl font-bold subpixel-antialiased">{projectName}</h3>
-                    <div className="flex items-center ">
-                        <IconContext.Provider value={{size: "1.75em"}}>
-                            <div>
-                                <IoMdArrowDropdown/>
-                            </div>
-                        </IconContext.Provider>
-                    </div>
                 </div>
             </div>
-            <div className={`${collapsed ? "transition-maxHeight ease-in max-h-100 duration-500 overflow-hidden" : "transition-maxHeight ease-in-out duration-300 max-h-0 overflow-hidden"}`}>
+            <div className="greetingSection text-white h-full">
                 <div className="flex flex-col body pt-2 px-4 pb-4 space-y-4">
-                    <div className="subHeader text-center italic text-gray-500 mt-4">
+                    <div className="subHeader text-center italic text-gray-400 mt-4">
                         <h3>{date}</h3>
                     </div>
-                    <div className="Body">
+                    <div className="Body h-96 relative">
                         <div className="description">
                             <div className="descriptionHeader text-center my-2">
                                 <h3 className="overflow-hidden"><span className="
@@ -78,17 +71,17 @@ const ProjectCard = ({projectName, date, description, languages, links, collapse
                                  after:w-screen
                                  after:mx-1
                                  after:left-full
-                                 after:border-b-black
+                                 after:border-b-white
                                  before:absolute
                                  before:top-1/2
                                  before:border-b-2
                                  before:mx-1
                                  before:w-screen
                                  before:right-full
-                                 before:border-b-black">Description</span></h3>
+                                 before:border-b-white">Description</span></h3>
                             </div>
                             <div className="descriptionContent px-2">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum repellendus, minus totam provident ipsum similique sequi animi aspernatur consequuntur nisi excepturi cupiditate, omnis molestiae voluptate architecto et natus officiis consectetur.</p>
+                                <p>{description}</p>
                             </div>
                         </div>
                         <div className="languages">
@@ -102,23 +95,25 @@ const ProjectCard = ({projectName, date, description, languages, links, collapse
                                  after:w-screen
                                  after:mx-1
                                  after:left-full
-                                 after:border-b-black
+                                 after:border-b-white
                                  before:absolute
                                  before:top-1/2
                                  before:border-b-2
                                  before:mx-1
                                  before:w-screen
                                  before:right-full
-                                 before:border-b-black">Languages Used</span></h3>
+                                 before:border-b-white">Languages Used</span></h3>
                             </div>
                             <div className="languagesContent px-2 flex justify-evenly flex-wrap">
                                 <MainCardList list={languages}></MainCardList>  
                             </div>
                         </div>
                         <div className="buttonArea p-2 mt-2">
-                            <div className="buttonGroup flex justify-evenly">
-                                <CardButton title="GitHub" primaryColor="bg-blue-800" hoverColor="hover:bg-blue-500"></CardButton>
-                                <CardButton title="Live Demo" primaryColor="bg-purple-700" hoverColor="hover:bg-purple-400"></CardButton>
+                            <div className="buttonGroup absolute bottom-0">
+                                <div className="flex justify-evenly gap-2">
+                                    <CardButton title="GitHub" primaryColor="bg-blue-800" hoverColor="hover:bg-blue-500" link={github}></CardButton>
+                                    <CardButton title="Live Demo" primaryColor="bg-purple-700" hoverColor="hover:bg-purple-400" link={demo}></CardButton>
+                                </div>
                             </div>
                         </div>
                     </div>
