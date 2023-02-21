@@ -3,7 +3,6 @@ import { IconContext } from 'react-icons'
 import { GoMarkGithub } from 'react-icons/go'
 import { BsLinkedin } from 'react-icons/bs'
 import { CgMail } from 'react-icons/cg'
-import { Link } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import '../styles/App.css'
 
@@ -18,12 +17,9 @@ export let NavBar = ({toastFunction}) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  const changeWidth = () => {
-    setScreenWidth(window.innerWidth);
-  }
 
   useEffect(() => {
-    console.log(toggleMenu)
+    //console.log(toggleMenu)
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
   })
 
@@ -46,13 +42,13 @@ export let NavBar = ({toastFunction}) => {
             </div>
           </IconContext.Provider>
         </div>
-        <div className={`navBody lg:max-h-96 ${toggleMenu ? "max-h-96" : "max-h-0"} flex overflow-hidden justify-between flex-col lg:flex-row ${screenWidth >= 1024 ? "transition-none" : "transition-maxHeight"} ease-in-out duration-500`}>
+        <div className={`navBody lg:max-h-96  ${toggleMenu ? "max-h-96" : "max-h-0"} flex overflow-hidden justify-between flex-col lg:flex-row ${screenWidth >= 1024 ? "transition-none" : "transition-maxHeight"} ease-in-out duration-500`}>
           <div className='pt-3 px-3 flex flex-grow justify-center lg:flex-grow-0 lg:justify-start'>
             <ul className='flex flex-col lg:flex-row'>
               <NavItem title="Passions" link="#passions"></NavItem>
               <NavItem title="Projects" link="#projects"></NavItem>
               <NavItem title="About Me" link="#about"></NavItem>
-              <NavItem title="Resume" link="#projects"></NavItem>
+              <NavItem title="Resume" link="https://drive.google.com/uc?export=download&id=1Ofj3f5kgDU7d9HT5xXR9wWWtRx9DwYct"></NavItem>
             </ul>
           </div>
           <div className="py-3 lg:hidden"></div>
@@ -60,14 +56,14 @@ export let NavBar = ({toastFunction}) => {
             <ul className='flex'>
               <li className='px-2'>
                 <IconContext.Provider value={{size: "1.75em"}}>
-                  <a href='https://github.com/terminator7' target="_blank" className='text-gray-300 hover:text-blue-300'>
+                  <a href='https://github.com/terminator7' target="_blank" rel="noopener noreferrer" className='text-gray-300 hover:text-blue-300'>
                       <GoMarkGithub/>
                   </a>
                 </IconContext.Provider>
               </li>
               <li className='px-2'>
                 <IconContext.Provider value={{size: "1.75em"}}>
-                  <a href='https://www.linkedin.com/in/jacob-douglas-414241205/' target="_blank" className='text-gray-300 hover:text-blue-300'>
+                  <a href='https://www.linkedin.com/in/jacob-douglas-414241205/' target="_blank" rel="noopener noreferrer" className='text-gray-300 hover:text-blue-300'>
                       <BsLinkedin/>
                   </a>
                 </IconContext.Provider>
